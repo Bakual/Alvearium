@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="plugin" group="editors-xtd">
+	<name>plg_editors-xtd_alvearium</name>
+	<author>Thomas Hunziker</author>
+	<creationDate>July 2011</creationDate>
+	<copyright>Copyright (C) 2005 - 2011 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<authorEmail>bakual@bakual.ch</authorEmail>
+	<authorUrl>www.bakual.ch</authorUrl>
+	<version>1.0</version>
+	<description>PLG_EDITORS-XTD_ALVEARIUM_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="alvearium">alvearium.php</filename>
+		<filename>index.html</filename>
+		<folder>language</folder>
+	</files>
+</extension>

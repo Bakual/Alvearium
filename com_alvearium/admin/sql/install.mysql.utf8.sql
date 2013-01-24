@@ -1,0 +1,97 @@
+DROP TABLE IF EXISTS `#__alvearium_plants`;
+DROP TABLE IF EXISTS `#__alvearium_blooms`;
+DROP TABLE IF EXISTS `#__alvearium_dates`;
+DROP TABLE IF EXISTS `#__alvearium_locations`;
+DROP TABLE IF EXISTS `#__alvearium_hives`;
+ 
+CREATE TABLE `#__alvearium_plants` (
+	`id` INT(10) NOT NULL AUTO_INCREMENT,
+	`title` VARCHAR(255) NOT NULL,
+	`alias` VARCHAR(255) NOT NULL,
+	`ordering` INT(11) NOT NULL DEFAULT '0',
+	`hits` INT(10) NOT NULL DEFAULT '0',
+	`created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`created_by` INT(10) NOT NULL DEFAULT '0',
+	`catid` INT(10) NOT NULL DEFAULT '0',
+	`metakey` TEXT NOT NULL,
+	`metadesc` TEXT NOT NULL,
+	`checked_out` INT(11) NOT NULL DEFAULT '0',
+	`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`state` TINYINT(3) NOT NULL DEFAULT '0',
+	`title_lat` VARCHAR(255) NOT NULL,
+	`content_item` INT(10) NOT NULL DEFAULT '0',
+	`avg_start` SMALLINT NULL,
+	`avg_stop` SMALLINT NULL,
+	PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `#__alvearium_hives` (
+	`id` INT(10) NOT NULL AUTO_INCREMENT,
+	`title` VARCHAR(255) NOT NULL,
+	`alias` VARCHAR(255) NOT NULL,
+	`ordering` INT(11) NOT NULL DEFAULT '0',
+	`hits` INT(10) NOT NULL DEFAULT '0',
+	`created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`created_by` INT(10) NOT NULL DEFAULT '0',
+	`catid` INT(10) NOT NULL DEFAULT '0',
+	`metakey` TEXT NOT NULL,
+	`metadesc` TEXT NOT NULL,
+	`checked_out` INT(11) NOT NULL DEFAULT '0',
+	`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`state` TINYINT(3) NOT NULL DEFAULT '0',
+	PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `#__alvearium_blooms` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`created_by` INT(10) NOT NULL DEFAULT '0',
+	`catid` INT(10) NOT NULL DEFAULT '0',
+	`checked_out` INT(11) NOT NULL DEFAULT '0',
+	`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`state` TINYINT(3) NOT NULL DEFAULT '0',
+	`ext_id` INT(10) NOT NULL DEFAULT '0',
+	`type` INT(1) NOT NULL DEFAULT '1',
+	`start_date` DATE NULL,
+	`stop_date` DATE NULL,
+	`notes` LONGTEXT NOT NULL,
+	PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `#__alvearium_dates` (
+	`id` INT NOT NULL AUTO_INCREMENT,
+	`title` MEDIUMTEXT NOT NULL DEFAULT '',
+	`alias` VARCHAR(255) NOT NULL,
+	`created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`created_by` INT(10) NOT NULL DEFAULT '0',
+	`catid` INT(10) NOT NULL DEFAULT '0',
+	`checked_out` INT(11) NOT NULL DEFAULT '0',
+	`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`state` TINYINT(3) NOT NULL DEFAULT '0',
+	`rep` BOOLEAN NOT NULL DEFAULT '0',
+	`notes` LONGTEXT NOT NULL,
+	`avg_start` SMALLINT NULL,
+	`avg_stop` SMALLINT NULL,
+	PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
+
+CREATE TABLE IF NOT EXISTS `#__alvearium_locations` (
+	`id` INT(10) NOT NULL AUTO_INCREMENT,
+	`title` VARCHAR(255) NOT NULL,
+	`alias` VARCHAR(255) NOT NULL,
+	`ordering` INT(11) NOT NULL DEFAULT '0',
+	`hits` INT(10) NOT NULL DEFAULT '0',
+	`created` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`created_by` INT(10) NOT NULL DEFAULT '0',
+	`catid` INT(10) NOT NULL DEFAULT '0',
+	`metakey` TEXT NOT NULL,
+	`metadesc` TEXT NOT NULL,
+	`checked_out` INT(11) NOT NULL DEFAULT '0',
+	`checked_out_time` DATETIME NOT NULL DEFAULT '0000-00-00 00:00:00',
+	`state` TINYINT(3) NOT NULL DEFAULT '0',
+	`lat` DECIMAL(8,6) NOT NULL DEFAULT '0',
+	`lng` DECIMAL(9,6) NOT NULL DEFAULT '0',
+	`ext_id` INT(10) NOT NULL DEFAULT '0',
+	`type` INT(1) NOT NULL DEFAULT '1',
+	PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="module" version="1.6" method="upgrade">
+	<name>MOD_ALVEARIUM</name>
+	<author>Thomas Hunziker</author>
+	<creationDate>January 2011</creationDate>
+	<copyright>(C) 2011</copyright>
+	<authorEmail>bakual@bakual.net</authorEmail>
+	<authorUrl>http://www.bakual.ch</authorUrl>
+	<version>1.0</version>
+	<license>http://www.gnu.org/licenses/gpl.html</license>
+	<description>MOD_ALVEARIUM_XML_DESCRIPTION</description>
+	<files>
+		<filename module="mod_alvearium">mod_alvearium.php</filename>
+		<filename>mod_alvearium.xml</filename>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<folder>tmpl</folder>
+		<folder>language</folder>
+	</files>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="daysplus" type="text" 
+					default="30"
+					label="MOD_ALVEARIUM_PARAM_DAYSPLUS_LABEL" 
+					description="MOD_ALVEARIUM_PARAM_DAYSPLUS_DESC" 
+				/>
+				<field name="menuitem" type="menuitem" 
+					default=""
+					label="MOD_ALVEARIUM_PARAM_MENUITEM_LABEL" 
+					description="MOD_ALVEARIUM_PARAM_MENUITEM_DESC" 
+					state="1"
+				/>
+			</fieldset>
+			<fieldset name="advanced">
+				<field name="layout" type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field name="moduleclass_sfx" type="text"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+				<field name="cache_items" type="list" 
+					default="0" 
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC">
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

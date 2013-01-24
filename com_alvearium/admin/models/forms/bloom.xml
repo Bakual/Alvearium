@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="general">
+		<field name="plant_id" type="sql" class="inputbox"
+			query="SELECT id, title FROM #__alvearium_plants"
+			key_field="id"
+			value_field="title"
+			onchange="document.getElementById('jform_date_id').value = 0; document.getElementById('jform_type').value = 1;"
+			label="COM_ALVEARIUM_FIELD_PLANT_LABEL"
+			description="COM_ALVEARIUM_FIELD_PLANT_DESC" >
+			<option value="0">COM_ALVEARIUM_SELECT_PLANT</option>
+		</field>
+
+		<field name="date_id" type="sql" class="inputbox"
+			query="SELECT id, title FROM #__alvearium_dates"
+			key_field="id"
+			value_field="title"
+			onchange="document.getElementById('jform_plant_id').value = 0; document.getElementById('jform_type').value = 2;"
+			label="COM_ALVEARIUM_FIELD_DATE_LABEL"
+			description="COM_ALVEARIUM_FIELD_DATE_DESC" >
+			<option value="0">COM_ALVEARIUM_SELECT_DATE</option>
+		</field>
+	</fieldset>
+
+	<fieldset name="notes">
+		<field name="notes" type="editor" buttons="true" hide="pagebreak,readmore"
+			class="inputbox"
+			filter="safehtml"
+			label="COM_ALVEARIUM_FIELD_NOTES_LABEL"
+			description="COM_ALVEARIUM_FIELD_NOTES_DESC" />
+	</fieldset>
+
+	<fieldset name="info">
+		<field name="id"  type="text" class="readonly"
+			label="JGLOBAL_FIELD_ID_LABEL" description ="JGLOBAL_FIELD_ID_DESC"
+			size="10" default="0" required="true"
+			readonly="true" />
+
+		<field name="created_by" type="user"
+			label="JGLOBAL_FIELD_CREATED_BY_LABEL" description="JGLOBAL_FIELD_CREATED_BY_DESC" />
+
+		<field name="created" type="text" class="readonly"
+			label="JGLOBAL_FIELD_CREATED_LABEL" description="JGLOBAL_FIELD_CREATED_DESC"
+			readonly="true" />
+
+	</fieldset>
+
+	<fieldset name="detail" label="COM_ALVEARIUM_DETAIL">
+		<field
+			name="state"
+			type="list"
+			label="JSTATUS"
+			description="JFIELD_PUBLISHED_DESC"
+			class="inputbox"
+			size="1"
+			default="1">
+			<option
+				value="1">JPUBLISHED</option>
+			<option
+				value="0">JUNPUBLISHED</option>
+			<option
+				value="2">JARCHIVED</option>
+			<option
+				value="-2">JTRASHED</option>
+		</field>
+
+		<field name="catid" type="category" extension="com_alvearium"
+			label="JCATEGORY" description="JFIELD_CATEGORY_DESC"
+			class="inputbox">
+			<option value="">JOPTION_SELECT_CATEGORY</option>
+		</field>
+
+		<field name="start_date" type="calendar" class="inputbox"
+			format="%Y-%m-%d"
+			label="COM_ALVEARIUM_FIELD_START_LABEL"
+			description="COM_ALVEARIUM_FIELD_START_DESC" />
+
+		<field name="stop_date" type="calendar" class="inputbox"
+			format="%Y-%m-%d"
+			label="COM_ALVEARIUM_FIELD_STOP_LABEL"
+			description="COM_ALVEARIUM_FIELD_STOP_DESC" />
+
+		<field name="type" type="hidden" class="inputbox" />
+	</fieldset>
+</form>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="plugin" group="content" method="upgrade">
+	<name>plg_content_alvearium</name>
+	<author>Thomas Hunziker</author>
+	<creationDate>July 2011</creationDate>
+	<copyright>Copyright (C) 2005 - 2011 Open Source Matters. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<authorEmail>bakual@bakual.ch</authorEmail>
+	<authorUrl>www.bakual.ch</authorUrl>
+	<version>1.2</version>
+	<description>PLG_CONTENT_ALVEARIUM_XML_DESCRIPTION</description>
+
+	<files>
+		<filename plugin="alvearium">alvearium.php</filename>
+		<filename>index.html</filename>
+		<folder>language</folder>
+	</files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_content_alvearium.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_content_alvearium.sys.ini</language>
+	</languages>
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="alvearium_count" type="text"
+					label="PLG_CONTENT_ALVEARIUM_COUNT_LABEL"
+					description="PLG_CONTENT_ALVEARIUM_COUNT_DESC"
+				/>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

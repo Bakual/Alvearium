@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<extension type="component" version="1.6" method="upgrade"> 
+	<name>Alvearium</name>
+	<author>Thomas Hunziker (Bakual, Coder), Vincent Kocher (Wombat, Tester)</author>
+	<creationDate>2011-06-17</creationDate>
+	<copyright>(C) 2011</copyright>
+	<authorEmail>werbemails@bakual.ch</authorEmail>
+	<authorUrl>http://www.bakual.ch, http://www.wombat.ch</authorUrl>
+	<version>1.2</version>
+	<releaseDate>2012-07-12</releaseDate>
+	<releaseType>Update</releaseType>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<description>Alvearium is a component which will manage everything related with bees</description>
+ 	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<update>
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+	<files folder="site">
+		<filename>router.php</filename>
+		<filename>alvearium.php</filename>
+		<filename>controller.php</filename>
+		<folder>views</folder>
+		<folder>models</folder>
+		<folder>language</folder>
+		<folder>helpers</folder>
+	</files>
+	<administration>
+		<menu img="components/com_alvearium/images/Mushroom-Bee-icon-16.png">COM_ALVEARIUM</menu>
+		<submenu>
+			<menu img="components/com_alvearium/images/Mushroom-Bee-icon-16.png" view="hives">COM_ALVEARIUM_HIVES</menu>
+			<menu img="components/com_alvearium/images/Flower-Fire-icon-16.png" view="plants">COM_ALVEARIUM_PLANTS</menu>
+			<menu img="components/com_alvearium/images/Pollen-Flower-icon-16.png" view="blooms">COM_ALVEARIUM_BLOOMS</menu>
+			<menu img="components/com_alvearium/images/Calendar-icon-16.png" view="dates">COM_ALVEARIUM_DATES</menu>
+			<menu img="components/com_alvearium/images/Location-icon-16.png" view="locations">COM_ALVEARIUM_LOCATIONS</menu>
+			<menu img="class:category" link="option=com_categories&amp;extension=com_alvearium">COM_ALVEARIUM_CATEGORY</menu>
+		</submenu>
+		<files folder="admin">
+			<filename>config.xml</filename>
+			<filename>alvearium.php</filename>
+			<filename>alvearium.css</filename>
+			<filename>controller.php</filename>
+			<filename>access.xml</filename>
+			<folder>controllers</folder>
+			<folder>models</folder>
+			<folder>images</folder>
+			<folder>helpers</folder>
+			<folder>views</folder>
+			<folder>tables</folder>
+			<folder>sql</folder>
+			<folder>language</folder>
+		</files>
+	</administration>
+	<tables>
+		<table>#__alvearium_plants</table>
+		<table>#__alvearium_blooms</table>
+		<table>#__alvearium_dates</table>
+		<table>#__alvearium_locations</table>
+		<table>#__alvearium_hives</table>
+	</tables>
+</extension>
