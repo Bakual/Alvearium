@@ -21,16 +21,16 @@ JHtml::_('behavior.keepalive');
 
 <script type="text/javascript">
 	Joomla.submitbutton = function(task) {
-		if (task == 'bloom.cancel' || document.formvalidator.isValid(document.id('item-form'))) {
+		if (task == 'bloom.cancel' || document.formvalidator.isValid(document.id('adminForm'))) {
 			<?php echo $this->form->getField('notes')->save(); ?>
-			Joomla.submitform(task, document.getElementById('item-form'));
+			Joomla.submitform(task, document.getElementById('adminForm'));
 		} else {
 			alert('<?php echo $this->escape(JText::_('JGLOBAL_VALIDATION_FORM_FAILED'));?>');
 		}
 	}
 </script>
 
-<form action="<?php echo JRoute::_('index.php?option=com_alvearium&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="item-form" class="form-validate">
+<form action="<?php echo JRoute::_('index.php?option=com_alvearium&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate">
 	<div class="width-60 fltlft">
 		<?php echo JHtml::_('tabs.start','bloom-tabs-'.$this->item->id, array('useCookie'=>1)); ?>
 		<?php echo JHtml::_('tabs.panel',JText::_('COM_ALVEARIUM_PLANT'), 'bloom-panel'); ?>
