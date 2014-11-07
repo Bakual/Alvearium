@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension version="1.6" type="plugin" group="content" method="upgrade">
+<extension version="3.3" type="plugin" group="content" method="upgrade">
 	<name>plg_content_alvearium</name>
 	<author>Thomas Hunziker</author>
-	<creationDate>July 2011</creationDate>
-	<copyright>Copyright (C) 2005 - 2011 Open Source Matters. All rights reserved.</copyright>
+	<creationDate>2014-11-07</creationDate>
+	<copyright>Copyright (C) 2014</copyright>
 	<license>GNU General Public License version 2 or later</license>
 	<authorEmail>bakual@bakual.ch</authorEmail>
 	<authorUrl>www.bakual.ch</authorUrl>
-	<version>1.2</version>
+	<version>3.0</version>
 	<description>PLG_CONTENT_ALVEARIUM_XML_DESCRIPTION</description>
 
 	<files>

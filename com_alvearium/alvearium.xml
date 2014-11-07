@@ -1,14 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?> 
-<extension type="component" version="1.6" method="upgrade"> 
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="component" version="3.3" method="upgrade">
 	<name>Alvearium</name>
 	<author>Thomas Hunziker (Bakual, Coder), Vincent Kocher (Wombat, Tester)</author>
-	<creationDate>2011-06-17</creationDate>
-	<copyright>(C) 2011</copyright>
+	<creationDate>2014-11-07</creationDate>
+	<copyright>(C) 2014</copyright>
 	<authorEmail>werbemails@bakual.ch</authorEmail>
 	<authorUrl>http://www.bakual.ch, http://www.wombat.ch</authorUrl>
-	<version>1.2</version>
-	<releaseDate>2012-07-12</releaseDate>
-	<releaseType>Update</releaseType>
+	<version>3.0</version>
 	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
 	<description>Alvearium is a component which will manage everything related with bees</description>
  	<install>
