@@ -20,7 +20,7 @@ class AlveariumViewLocations extends JViewLegacy
 		}
 
 		$this->addToolbar();
-		AlveariumHelper::addSubmenu('hives');
+		AlveariumHelper::addSubmenu('locations');
 		$this->sidebar = JHtmlSidebar::render();
 
 		parent::display($tpl);

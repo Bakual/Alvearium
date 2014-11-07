@@ -33,34 +33,34 @@ $saveOrder	= $listOrder == 'a.ordering';
 							<input type="checkbox" name="checkall-toggle" value="" onclick="checkAll(this)" />
 						</th>
 						<th class="title">
-							<?php echo JHtml::_('searchtool.sort',  'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
+							<?php echo JHtml::_('searchtools.sort',  'JGLOBAL_TITLE', 'a.title', $listDirn, $listOrder); ?>
 						</th>
 						<th width="5%">
-							<?php echo JHtml::_('searchtool.sort',  'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
+							<?php echo JHtml::_('searchtools.sort',  'JSTATUS', 'a.state', $listDirn, $listOrder); ?>
 						</th>
 						<th width="5%">
-							<?php echo JHtml::_('searchtool.sort',  'COM_ALVEARIUM_TYPE', 'type', $listDirn, $listOrder); ?>
+							<?php echo JHtml::_('searchtools.sort',  'COM_ALVEARIUM_TYPE', 'type', $listDirn, $listOrder); ?>
 						</th>
 						<th width="10%">
-							<?php echo JHtml::_('searchtool.sort',  'COM_ALVEARIUM_PLANT', 'plant_title', $listDirn, $listOrder); ?>
+							<?php echo JHtml::_('searchtools.sort',  'COM_ALVEARIUM_PLANT', 'plant_title', $listDirn, $listOrder); ?>
 						</th>
 						<th width="10%">
-							<?php echo JHtml::_('searchtool.sort',  'COM_ALVEARIUM_HIVE', 'hive_title', $listDirn, $listOrder); ?>
+							<?php echo JHtml::_('searchtools.sort',  'COM_ALVEARIUM_HIVE', 'hive_title', $listDirn, $listOrder); ?>
 						</th>
 						<th width="20%">
-							<?php echo JHtml::_('searchtool.sort',  'JCATEGORY', 'category_title', $listDirn, $listOrder); ?>
+							<?php echo JHtml::_('searchtools.sort',  'JCATEGORY', 'category_title', $listDirn, $listOrder); ?>
 						</th>
 						<th width="10%">
-							<?php echo JHtml::_('searchtool.sort',  'JGRID_HEADING_ORDERING', 'a.ordering', $listDirn, $listOrder); ?>
+							<?php echo JHtml::_('searchtools.sort',  'JGRID_HEADING_ORDERING', 'a.ordering', $listDirn, $listOrder); ?>
 							<?php if ($canOrder && $saveOrder) :?>
 								<?php echo JHtml::_('grid.order',  $this->items, 'filesave.png', 'locations.saveorder'); ?>
 							<?php endif; ?>
 						</th>
 						<th width="5%">
-							<?php echo JHtml::_('searchtool.sort',  'JGLOBAL_HITS', 'a.hits', $listDirn, $listOrder); ?>
+							<?php echo JHtml::_('searchtools.sort',  'JGLOBAL_HITS', 'a.hits', $listDirn, $listOrder); ?>
 						</th>
 						<th width="1%" class="nowrap">
-							<?php echo JHtml::_('searchtool.sort',  'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
+							<?php echo JHtml::_('searchtools.sort',  'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
 						</th>
 					</tr>
 				</thead>

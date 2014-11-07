@@ -33,7 +33,7 @@ JHtml::_('behavior.keepalive');
 	<?php echo JLayoutHelper::render('joomla.edit.title_alias', $this); ?>
 	<div class="row-fluid">
 		<div class="span9">
-			<div class="form-horizontal"s>
+			<div class="form-horizontal">
 				<div class="row-fluid form-horizontal-desktop">
 					<div class="span6">
 						<?php echo JLayoutHelper::render('joomla.edit.publishingdata', $this); ?>

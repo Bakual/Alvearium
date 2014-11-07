@@ -27,13 +27,11 @@
 				value="-2">JTRASHED</option>
 		</field>
 
-		<field name="lat" type="text" class="inputbox"
-			size="40" label="COM_ALVEARIUM_FIELD_LAT_LABEL"
-			description="COM_ALVEARIUM_FIELD_LAT_DESC" />
-
-		<field name="lng" type="text" class="inputbox"
-			size="40" label="COM_ALVEARIUM_FIELD_LON_LABEL"
-			description="COM_ALVEARIUM_FIELD_LON_DESC" />
+		<field name="catid" type="category" extension="com_alvearium"
+			label="JCATEGORY" description="JFIELD_CATEGORY_DESC"
+			class="inputbox">
+			<option value="">JOPTION_SELECT_CATEGORY</option>
+		</field>
 
 		<field name="plant_id" type="sql"
 			label="COM_ALVEARIUM_FIELD_PLANT_LABEL" description="COM_ALVEARIUM_FIELD_PLANT_DESC"
@@ -52,8 +50,13 @@
 			value_field="title" >
 			<option value="0">COM_ALVEARIUM_SELECT_HIVE</option>
 		</field>
+		<field name="metadesc" type="textarea"
+			label="JFIELD_META_DESCRIPTION_LABEL" description="JFIELD_META_DESCRIPTION_DESC"
+			class="inputbox" rows="3" cols="30" />
 
-		<field name="type" type="hidden" class="inputbox" />
+		<field name="metakey" type="textarea"
+			label="JFIELD_META_KEYWORDS_LABEL" description="JFIELD_META_KEYWORDS_DESC"
+			class="inputbox" rows="3" cols="30" />
 	</fieldset>
 
 	<fieldset name="info">
@@ -75,23 +78,35 @@
 	</fieldset>
 
 	<fieldset name="detail" label="COM_ALVEARIUM_DETAIL" >
-		<field name="catid" type="category" extension="com_alvearium"
-			label="JCATEGORY" description="JFIELD_CATEGORY_DESC"
-			class="inputbox">
-			<option value="">JOPTION_SELECT_CATEGORY</option>
-		</field>
+		<field name="lat" type="text" class="inputbox"
+			size="40" label="COM_ALVEARIUM_FIELD_LAT_LABEL"
+			description="COM_ALVEARIUM_FIELD_LAT_DESC" />
+
+		<field name="lng" type="text" class="inputbox"
+			size="40" label="COM_ALVEARIUM_FIELD_LON_LABEL"
+			description="COM_ALVEARIUM_FIELD_LON_DESC" />
+
 
 		<field name="type" type="hidden" class="inputbox" />
 	</fieldset>
 
-	<fieldset name="metadata" label="JGLOBAL_FIELDSET_METADATA_OPTIONS">
-		<field name="metadesc" type="textarea"
-			label="JFIELD_META_DESCRIPTION_LABEL" description="JFIELD_META_DESCRIPTION_DESC"
-			class="inputbox" rows="3" cols="30" />
+	<fields name="metadata">
+		<fieldset name="jmetadata" label="JGLOBAL_FIELDSET_METADATA_OPTIONS">
+			<field name="robots" type="list"
+				label="JFIELD_METADATA_ROBOTS_LABEL" description="JFIELD_METADATA_ROBOTS_DESC" >
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="index, follow">JGLOBAL_INDEX_FOLLOW</option>
+				<option value="noindex, follow">JGLOBAL_NOINDEX_FOLLOW</option>
+				<option value="index, nofollow">JGLOBAL_INDEX_NOFOLLOW</option>
+				<option value="noindex, nofollow">JGLOBAL_NOINDEX_NOFOLLOW</option>
+			</field>
 
-		<field name="metakey" type="textarea"
-			label="JFIELD_META_KEYWORDS_LABEL" description="JFIELD_META_KEYWORDS_DESC"
-			class="inputbox" rows="3" cols="30" />
-
-	</fieldset>
+			<field name="rights" type="text"
+				label="JFIELD_META_RIGHTS_LABEL" description="JFIELD_META_RIGHTS_DESC"
+				required="false"
+				filter="string"
+				cols="30"
+				rows="2" />
+		</fieldset>
+	</fields>
 </form>
