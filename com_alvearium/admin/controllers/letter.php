@@ -1,8 +1,7 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.application.component.controller');
-JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_alvearium'.DS.'tables'); 
+JTable::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_alvearium/tables');
 
 class AlveariumControllerBloom extends AlveariumController
 {
@@ -40,8 +39,8 @@ class AlveariumControllerBloom extends AlveariumController
 	function save()
 	{
 		// Check for request forgeries
-		JRequest::checkToken() or jexit('Invalid Token');
-		
+		JSession::checkToken() or jexit('Invalid Token');
+
 		$row = &JTable::getInstance('blooms', 'Table');
 		$post = JRequest::get('post');
 		// get the Text Area 'text' again, but not full *cleaned* by JRequest.
@@ -72,8 +71,8 @@ class AlveariumControllerBloom extends AlveariumController
 	function remove()
 	{
 		// Check for request forgeries
-		JRequest::checkToken() or jexit('Invalid Token');
-		
+		JSession::checkToken() or jexit('Invalid Token');
+
 		$cid = JRequest::getVar('cid', array(), '', 'array');
 		JArrayHelper::toInteger($cid);
 
@@ -93,7 +92,7 @@ class AlveariumControllerBloom extends AlveariumController
 	function cancel()
 	{
 		// Check for request forgeries
-		JRequest::checkToken() or jexit('Invalid Token');
+		JSession::checkToken() or jexit('Invalid Token');
 
 		$id	= JRequest::getInt('id', 0);
 		$db	= &JFactory::getDBO();
@@ -109,7 +108,7 @@ class AlveariumControllerBloom extends AlveariumController
 	function BloomStart()
 	{
 		// Check for request forgeries
-		JRequest::checkToken() or jexit( 'Invalid Token' );
+		JSession::checkToken() or jexit( 'Invalid Token' );
 
 		// Initialize some variables
 		$db		= & JFactory::getDBO();
@@ -139,7 +138,7 @@ class AlveariumControllerBloom extends AlveariumController
 	function BloomIntervall()
 	{
 		// Check for request forgeries
-		JRequest::checkToken() or jexit( 'Invalid Token' );
+		JSession::checkToken() or jexit( 'Invalid Token' );
 
 		// Initialize some variables
 		$db		= & JFactory::getDBO();

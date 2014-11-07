@@ -1,13 +1,11 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.application.component.controller');
-
-class AlveariumController extends JController { 
+class AlveariumController extends JControllerLegacy {
 	function display($cachable = false, $urlparams = false)
 	{
-		// Setzt einen Standard view 
-		if(!JRequest::getCmd('view')) 
+		// Setzt einen Standard view
+		if(!JRequest::getCmd('view'))
 		{
 			JRequest::setVar('view', 'main');
 		}

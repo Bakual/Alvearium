@@ -1,26 +1,29 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.application.component.controller');
-JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_alvearium'.DS.'tables'); 
+JTable::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_alvearium/tables');
 
 class AlveariumControllerPlant extends AlveariumController
 {
 	/**
 	 * Custom Constructor (registers additional tasks to methods)
 	 */
-	function __construct($default = array())
+	public function __construct($default = array())
 	{
 		parent::__construct($default);
 
 		$this->registerTask('apply', 'save');
 		$this->registerTask('unpublish', 'publish');
-		$this->registerTask('edit',	'display');
-		$this->registerTask('add', 'display' );
+		$this->registerTask('edit', 'display');
+		$this->registerTask('add', 'display');
 	}
 
-	function display(){
-		switch($this->getTask()){
+	public function display()
+	{
+		$input = JFactory::getApplication()->input;
+
+		switch($this->getTask())
+		{
 			case 'add':
 				JRequest::setVar('hidemainmenu', 1);
 				JRequest::setVar('layout', 'form');
@@ -37,13 +40,15 @@ class AlveariumControllerPlant extends AlveariumController
 		parent::display();
 	}
 
-	function save()
+	public function save()
 	{
+		$input = JFactory::getApplication()->input;
+
 		// Check for request forgeries
-		JRequest::checkToken() or jexit('Invalid Token');
-		
-		$row = &JTable::getInstance('plants', 'Table');
-		$post = JRequest::get('post');
+		JSession::checkToken() or jexit('Invalid Token');
+
+		$row  = JTable::getInstance('plants', 'Table');
+		$post = $input->get('post');
 
 		$success = $row->save($post);
 		if (!$success) {
@@ -70,8 +75,8 @@ class AlveariumControllerPlant extends AlveariumController
 	function remove()
 	{
 		// Check for request forgeries
-		JRequest::checkToken() or jexit('Invalid Token');
-		
+		JSession::checkToken() or jexit('Invalid Token');
+
 		$cid = JRequest::getVar('cid', array(), '', 'array');
 		JArrayHelper::toInteger($cid);
 
@@ -95,7 +100,7 @@ class AlveariumControllerPlant extends AlveariumController
 	function publish()
 	{
 		// Check for request forgeries
-		JRequest::checkToken() or jexit('Invalid Token');
+		JSession::checkToken() or jexit('Invalid Token');
 
 		$cid = JRequest::getVar('cid', array(), '', 'array');
 		JArrayHelper::toInteger($cid);
@@ -111,14 +116,14 @@ class AlveariumControllerPlant extends AlveariumController
 		if (!$row->publish($cid,$publish)) {
 			$msg = $row->getError();
 		}
-		
+
 		$this->setRedirect('index.php?option=com_alvearium&view=plants', $msg);
 	}
 
 	function cancel()
 	{
 		// Check for request forgeries
-		JRequest::checkToken() or jexit('Invalid Token');
+		JSession::checkToken() or jexit('Invalid Token');
 
 		$id	= JRequest::getInt('id', 0);
 		$db	= &JFactory::getDBO();
