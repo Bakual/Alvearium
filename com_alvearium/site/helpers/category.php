@@ -1,6 +1,6 @@
 <?php
 /**
- * @package		com_sermonspeaker
+ * @package		com_alvearium
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -10,10 +10,10 @@ defined('_JEXEC') or die;
 jimport('joomla.application.categories');
 
 /**
- * SermonSpeaker Component Category Tree
+ * Alvearium Component Category Tree
  *
  * @static
- * @package		com_sermonspeaker
+ * @package		com_alvearium
  */
 class AlveariumCategories extends JCategories
 {
