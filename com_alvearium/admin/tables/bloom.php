@@ -17,7 +17,7 @@ class AlveariumTableBloom extends JTable
 		}
 		if (!intval($this->created)) {
 			$date	= JFactory::getDate();
-			$this->created = $date->toMySQL();
+			$this->created = $date->toSql();
 		}
 
 		return parent::store(true);

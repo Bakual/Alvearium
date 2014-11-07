@@ -21,6 +21,7 @@ class AlveariumViewBlooms extends JViewLegacy
 		// We don't need toolbar in the modal window.
 		if ($this->getLayout() !== 'modal') {
 			$this->addToolbar();
+			$this->sidebar = JHtmlSidebar::render();
 		}
 
 		parent::display($tpl);

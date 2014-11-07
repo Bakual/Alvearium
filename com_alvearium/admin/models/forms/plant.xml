@@ -30,11 +30,6 @@
 			<option
 				value="-2">JTRASHED</option>
 		</field>
-
-		<field name="ordering" type="ordering" class="inputbox"
-			table="alvearium_plants" field="title"
-			label="JFIELD_ORDERING_LABEL"
-			description="JFIELD_ORDERING_DESC" />
 	</fieldset>
 
 	<fieldset name="info">
@@ -62,9 +57,9 @@
 			class="inputbox">
 			<option value="">JOPTION_SELECT_CATEGORY</option>
 		</field>
-		<field name="content_item" type="modal_article" 
-			default="0" 
-			label="COM_ALVEARIUM_FIELD_CONTENT_LABEL" 
+		<field name="content_item" type="modal_article"
+			default="0"
+			label="COM_ALVEARIUM_FIELD_CONTENT_LABEL"
 			description="COM_ALVEARIUM_FIELD_CONTENT_DESC" />
 
 	</fieldset>

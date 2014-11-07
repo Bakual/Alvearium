@@ -27,11 +27,6 @@
 				value="-2">JTRASHED</option>
 		</field>
 
-		<field name="ordering" type="ordering" class="inputbox"
-			table="alvearium_locations" field="title"
-			label="JFIELD_ORDERING_LABEL"
-			description="JFIELD_ORDERING_DESC" />
-
 		<field name="lat" type="text" class="inputbox"
 			size="40" label="COM_ALVEARIUM_FIELD_LAT_LABEL"
 			description="COM_ALVEARIUM_FIELD_LAT_DESC" />

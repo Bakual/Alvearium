@@ -26,7 +26,7 @@ class AlveariumModelPlant extends JModelAdmin
 					return ;
 				}
 			$user = JFactory::getUser();
-	
+
 			if (!empty($record->catid)) {
 				return $user->authorise('core.delete', 'com_alvearium.category.'.(int) $record->catid);
 			}
@@ -112,7 +112,8 @@ class AlveariumModelPlant extends JModelAdmin
 	 * @param	JTable	A JTable object.
 	 * @since	1.6
 	 */
-	protected function prepareTable(&$table)
+	protected function prepareTable($table)
+
 	{
 		$table->title = htmlspecialchars_decode($table->title, ENT_QUOTES);
 		$table->alias = JApplication::stringURLSafe($table->alias);

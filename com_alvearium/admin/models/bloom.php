@@ -138,7 +138,8 @@ class AlveariumModelBloom extends JModelAdmin
 	 * @param	JTable	A JTable object.
 	 * @since	1.6
 	 */
-	protected function prepareTable(&$table)
+	protected function prepareTable($table)
+
 	{
 		if($table->stop_date == '0000-00-00' || $table->stop_date == ''){
 			$table->stop_date = null;
