@@ -17,7 +17,7 @@ jimport('joomla.application.component.view');
  * @subpackage	com_alvearium
  * @since		1.5
  */
-class AlveariumViewLocation extends JView
+class AlveariumViewLocation extends JViewLegacy
 {
 	protected $form;
 	protected $item;

@@ -3,7 +3,7 @@ defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.view');
 
-class AlveariumViewBlooms extends JView
+class AlveariumViewBlooms extends JViewLegacy
 {
 	public function display($tpl = null)
 	{
@@ -11,7 +11,7 @@ class AlveariumViewBlooms extends JView
 		$this->pagination	= $this->get('Pagination');
 		$this->state		= $this->get('State');
 		$this->authors		= $this->get('Authors');
-		
+
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
 			JError::raiseError(500, implode("\n", $errors));
@@ -33,7 +33,7 @@ class AlveariumViewBlooms extends JView
 		$state	= $this->get('State');
 		$canDo	= AlveariumHelper::getActions($state->get('filter.category_id'));
 		$user	= JFactory::getUser();
-		
+
 		JToolBarHelper::title(JText::_('COM_ALVEARIUM_MANAGER_BLOOMS'), 'blooms');
 
 		if ($canDo->get('core.create')) {

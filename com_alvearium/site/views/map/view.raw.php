@@ -4,7 +4,7 @@ defined('_JEXEC') or die('Restricted access');
 jimport('joomla.application.component.view');
 jimport('joomla.application.categories');
 
-class AlveariumViewMap extends JView
+class AlveariumViewMap extends JViewLegacy
 {
 	function display( $tpl = null )
 	{

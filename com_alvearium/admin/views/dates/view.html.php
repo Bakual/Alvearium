@@ -3,7 +3,7 @@ defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.view');
 
-class AlveariumViewDates extends JView
+class AlveariumViewDates extends JViewLegacy
 {
 	public function display($tpl = null)
 	{
@@ -11,7 +11,7 @@ class AlveariumViewDates extends JView
 		$this->pagination	= $this->get('Pagination');
 		$this->state		= $this->get('State');
 		$this->authors		= $this->get('Authors');
-		
+
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
 			JError::raiseError(500, implode("\n", $errors));
@@ -30,7 +30,7 @@ class AlveariumViewDates extends JView
 		$state	= $this->get('State');
 		$canDo	= AlveariumHelper::getActions();
 		$user	= JFactory::getUser();
-		
+
 		JToolBarHelper::title(JText::_('COM_ALVEARIUM_MANAGER_DATES'), 'dates');
 
 		if ($canDo->get('core.create')) {

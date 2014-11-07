@@ -3,7 +3,7 @@ defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.view');
 
-class AlveariumViewHives extends JView
+class AlveariumViewHives extends JViewLegacy
 {
 	public function display($tpl = null)
 	{
@@ -29,7 +29,7 @@ class AlveariumViewHives extends JView
 		$state	= $this->get('State');
 		$canDo	= AlveariumHelper::getActions();
 		$user	= JFactory::getUser();
-		
+
 		JToolBarHelper::title(JText::_('COM_ALVEARIUM_MANAGER_HIVES'), 'hives');
 
 		if ($canDo->get('core.create')) {

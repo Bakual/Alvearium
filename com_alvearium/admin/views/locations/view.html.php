@@ -3,7 +3,7 @@ defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.view');
 
-class AlveariumViewLocations extends JView
+class AlveariumViewLocations extends JViewLegacy
 {
 	public function display($tpl = null)
 	{
@@ -29,7 +29,7 @@ class AlveariumViewLocations extends JView
 		$state	= $this->get('State');
 		$canDo	= AlveariumHelper::getActions();
 		$user	= JFactory::getUser();
-		
+
 		JToolBarHelper::title(JText::_('COM_ALVEARIUM_MANAGER_LOCATIONS'), 'locations');
 
 		if ($canDo->get('core.create')) {
