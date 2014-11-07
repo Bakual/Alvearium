@@ -7,7 +7,7 @@ class AlveariumControllerDates extends JControllerAdmin
 	/**
 	 * Proxy for getModel.
 	 */
-	public function &getModel($name = 'Date', $prefix = 'AlveariumModel')
+	public function getModel($name = 'Date', $prefix = 'AlveariumModel', $config = array())
 	{
 		return parent::getModel($name, $prefix, array('ignore_request' => true));
 	}

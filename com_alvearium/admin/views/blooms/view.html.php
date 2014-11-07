@@ -11,6 +11,8 @@ class AlveariumViewBlooms extends JViewLegacy
 		$this->pagination	= $this->get('Pagination');
 		$this->state		= $this->get('State');
 		$this->authors		= $this->get('Authors');
+		$this->filterForm    = $this->get('FilterForm');
+		$this->activeFilters = $this->get('ActiveFilters');
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))) {
@@ -21,6 +23,7 @@ class AlveariumViewBlooms extends JViewLegacy
 		// We don't need toolbar in the modal window.
 		if ($this->getLayout() !== 'modal') {
 			$this->addToolbar();
+			AlveariumHelper::addSubmenu('blooms');
 			$this->sidebar = JHtmlSidebar::render();
 		}
 

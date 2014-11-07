@@ -9,7 +9,7 @@ class AlveariumControllerLocations extends JControllerAdmin
 	/**
 	 * Proxy for getModel.
 	 */
-	public function getModel($name = 'Location', $prefix = 'AlveariumModel')
+	public function getModel($name = 'Location', $prefix = 'AlveariumModel', $config = array())
 	{
 		return parent::getModel($name, $prefix, array('ignore_request' => true));
 	}

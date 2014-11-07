@@ -10,7 +10,7 @@ class AlveariumControllerBloom extends JControllerForm
 		return parent::allowAdd();
 	}
 
-	protected function postSaveHook(JModel &$model, $validData = array())
+	protected function postSaveHook(JModelLegacy $model, $validData = array())
 	{
 		$this->updateAvg($validData);
 

@@ -116,10 +116,9 @@ $saveOrder	= $listOrder == 'a.ordering';
 		<?php endif; ?>
 
 		<?php echo $this->pagination->getListFooter(); ?>
-	<div>
+
 		<input type="hidden" name="task" value="" />
 		<input type="hidden" name="boxchecked" value="0" />
 		<?php echo JHtml::_('form.token'); ?>
-	</div>
 </div>
 </form>

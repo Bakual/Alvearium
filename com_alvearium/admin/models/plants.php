@@ -29,7 +29,7 @@ class AlveariumModelPlants extends JModelList
 		$app = JFactory::getApplication();
 
 		// Adjust the context to support modal layouts.
-		if ($layout = $app->input->get)
+		if ($layout = $app->input->get('layout'))
 		{
 			$this->context .= '.'.$layout;
 		}
