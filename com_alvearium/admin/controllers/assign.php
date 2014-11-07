@@ -20,46 +20,47 @@ class AlveariumControllerPlant extends AlveariumController
 
 	public function display()
 	{
-		$input = JFactory::getApplication()->input;
+		$jinput = JFactory::getApplication()->input;
 
-		switch($this->getTask())
+		switch($this->task)
 		{
 			case 'add':
-				JRequest::setVar('hidemainmenu', 1);
-				JRequest::setVar('layout', 'form');
-				JRequest::setVar('view', 'assign');
-				JRequest::setVar('edit', false);
+				$jinput->set('hidemainmenu', 1);
+				$jinput->set('layout', 'form');
+				$jinput->set('view', 'assign');
+				$jinput->set('edit', false);
 				break;
 			case 'edit':
-				JRequest::setVar('hidemainmenu', 1);
-				JRequest::setVar('layout', 'form');
-				JRequest::setVar('view', 'assign');
-				JRequest::setVar('edit', true);
+				$jinput->set('hidemainmenu', 1);
+				$jinput->set('layout', 'form');
+				$jinput->set('view', 'assign');
+				$jinput->set('edit', true);
 				break;
 		}
-		parent::display();
+
+		return parent::display();
 	}
 
 	public function save()
 	{
-		$input = JFactory::getApplication()->input;
-
 		// Check for request forgeries
 		JSession::checkToken() or jexit('Invalid Token');
 
 		$row  = JTable::getInstance('plants', 'Table');
-		$post = $input->get('post');
+		$post = JFactory::getApplication()->input->post->getArray();
 
 		$success = $row->save($post);
-		if (!$success) {
+
+		if (!$success)
+		{
 			JError::raiseError(500, $row->getError());
 		}
 
-		switch ($this->_task)
+		switch ($this->task)
 		{
 			case 'apply':
 				$msg = JText::_('COM_ALVEARIUM_PLANTS_APPLIED');
-				$link = 'index.php?option=com_alvearium&controller=assign&task=edit&cid[]='.$row->id;
+				$link = 'index.php?option=com_alvearium&controller=assign&task=edit&cid[]=' . $row->id;
 				break;
 
 			case 'save':
@@ -72,18 +73,19 @@ class AlveariumControllerPlant extends AlveariumController
 		$this->setRedirect($link, $msg);
 	}
 
-	function remove()
+	public function remove()
 	{
 		// Check for request forgeries
 		JSession::checkToken() or jexit('Invalid Token');
 
-		$cid = JRequest::getVar('cid', array(), '', 'array');
+		$jinput = JFactory::getApplication()->input;
+		$cid    = $jinput->get('cid', array(), '', 'array');
 		JArrayHelper::toInteger($cid);
 
 		$msg = JText::_('COM_ALVEARIUM_PLANTS_DELETED');
 		$row = &JTable::getInstance('plants', 'Table');
 
-		for ($i=0, $n=count($cid); $i < $n; $i++)
+		for ($i = 0, $n=count($cid); $i < $n; $i++)
 		{
 			if (!$row->delete($cid[$i]))
 			{
@@ -97,40 +99,45 @@ class AlveariumControllerPlant extends AlveariumController
 	/**
 	* Publishes or Unpublishes one or more records
 	*/
-	function publish()
+	public function publish()
 	{
 		// Check for request forgeries
 		JSession::checkToken() or jexit('Invalid Token');
 
-		$cid = JRequest::getVar('cid', array(), '', 'array');
+		$jinput = JFactory::getApplication()->input;
+		$cid    = $jinput->get('cid', array(), '', 'array');
 		JArrayHelper::toInteger($cid);
 		$publish = ($this->getTask() == 'publish' ? 1 : 0);
 
-		if (count($cid) < 1) {
+		if (count($cid) < 1)
+		{
 			$action = $publish ? JText::_('PUBLISH') : JText::_('UNPUBLISH');
-			JError::raiseError(500, JText::_('SELECT_ITEM_TO'.$action, true));
+			JError::raiseError(500, JText::_('SELECT_ITEM_TO' . $action, true));
 		}
 
-		$msg = $publish ? JText::_('COM_ALVEARIUM_PLANTS').' '.JText::_('PUBLISHED') : JText::_('COM_ALVEARIUM_PLANTS').' '.JText::_('UNPUBLISHED');
-		$row = &JTable::getInstance('plants', 'Table');
-		if (!$row->publish($cid,$publish)) {
+		$msg = $publish ? JText::_('COM_ALVEARIUM_PLANTS') . ' ' . JText::_('PUBLISHED') : JText::_('COM_ALVEARIUM_PLANTS') . ' ' . JText::_('UNPUBLISHED');
+		$row = JTable::getInstance('plants', 'Table');
+
+		if (!$row->publish($cid,$publish))
+		{
 			$msg = $row->getError();
 		}
 
 		$this->setRedirect('index.php?option=com_alvearium&view=plants', $msg);
 	}
 
-	function cancel()
+	public function cancel()
 	{
 		// Check for request forgeries
 		JSession::checkToken() or jexit('Invalid Token');
 
-		$id	= JRequest::getInt('id', 0);
-		$db	= &JFactory::getDBO();
-		$row = &JTable::getInstance('plants', 'Table');
+		$jinput = JFactory::getApplication()->input;
+		$id     = $jinput->getInt('id', 0);
+		$db     = JFactory::getDBO();
+		$row    = JTable::getInstance('plants', 'Table');
 		$row->checkin($id);
 		$msg = JText::_('COM_ALVEARIUM_CANCELED');
-		$this->setRedirect('index.php?option=com_alvearium&view=plants', $msg );
+		$this->setRedirect('index.php?option=com_alvearium&view=plants', $msg);
 	}
 
 }

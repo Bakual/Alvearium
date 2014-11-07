@@ -50,7 +50,7 @@ class AlveariumViewHive extends JView
 	 */
 	protected function addToolbar()
 	{
-		JRequest::setVar('hidemainmenu', true);
+		JFactory::getApplication()->input->set('hidemainmenu', true);
 
 		$user		= JFactory::getUser();
 		$isNew		= ($this->item->id == 0);
@@ -61,12 +61,12 @@ class AlveariumViewHive extends JView
 		JToolBarHelper::title($isNew ? JText::_('COM_ALVEARIUM_MANAGER_HIVE_NEW') : JText::_('COM_ALVEARIUM_MANAGER_HIVE_EDIT'), 'hives');
 
 		// If not checked out, can save the item.
-		if (!$checkedOut && ($canDo->get('core.edit')||$canDo->get('core.create'))) {	
+		if (!$checkedOut && ($canDo->get('core.edit')||$canDo->get('core.create'))) {
 			JToolBarHelper::apply('hive.apply', 'JTOOLBAR_APPLY');
 			JToolBarHelper::save('hive.save', 'JTOOLBAR_SAVE');
 		}
 		if (!$checkedOut && $canDo->get('core.create')) {
-		
+
 			JToolBarHelper::custom('hive.save2new', 'save-new.png', 'save-new_f2.png', 'JTOOLBAR_SAVE_AND_NEW', false);
 		}
 		// If an existing item, can save to a copy.

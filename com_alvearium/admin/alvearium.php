@@ -2,16 +2,16 @@
 defined('_JEXEC') or die('Restricted access');
 
 // Access check.
-if (!JFactory::getUser()->authorise('core.manage', 'com_sermonspeaker'))
+if (!JFactory::getUser()->authorise('core.manage', 'com_alvearium'))
 {
-        return JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
+	throw new Exception(JText::_('JERROR_ALERTNOAUTHOR'), 404);
 }
 
-// require helper file
-JLoader::register('SermonspeakerHelper', dirname(__FILE__) . '/helpers/sermonspeaker.php');
+// Require helper file
+JLoader::register('AlveariumHelper', dirname(__FILE__) . '/helpers/alvearium.php');
 
 JHTML::stylesheet('administrator/components/com_alvearium/alvearium.css');
 
-$controller	= JController::getInstance('Alvearium');
-$controller->execute(JRequest::getCmd('task'));
+$controller = JControllerLegacy::getInstance('Alvearium');
+$controller->execute(JFactory::getApplication()->input->get('task'));
 $controller->redirect();

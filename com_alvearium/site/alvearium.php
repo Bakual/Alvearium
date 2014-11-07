@@ -1,6 +1,6 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
-$controller	= JController::getInstance('Alvearium');
-$controller->execute(JRequest::getCmd('task'));
+$controller	= JControllerLegacy::getInstance('Alvearium');
+$controller->execute(JFactory::getApplication()->input->getCmd('task'));
 $controller->redirect();

@@ -50,7 +50,8 @@ class AlveariumViewBloom extends JView
 	 */
 	protected function addToolbar()
 	{
-		JRequest::setVar('hidemainmenu', true);
+
+		JFactory::getApplication()->input->set('hidemainmenu', true);
 
 		$user		= JFactory::getUser();
 		$isNew		= ($this->item->id == 0);
@@ -61,12 +62,12 @@ class AlveariumViewBloom extends JView
 		JToolBarHelper::title($isNew ? JText::_('COM_ALVEARIUM_MANAGER_BLOOM_NEW') : JText::_('COM_ALVEARIUM_MANAGER_BLOOM_EDIT'), 'blooms');
 
 		// If not checked out, can save the item.
-		if (!$checkedOut && ($canDo->get('core.edit')||$canDo->get('core.create'))) {	
+		if (!$checkedOut && ($canDo->get('core.edit')||$canDo->get('core.create'))) {
 			JToolBarHelper::apply('bloom.apply', 'JTOOLBAR_APPLY');
 			JToolBarHelper::save('bloom.save', 'JTOOLBAR_SAVE');
 		}
 		if (!$checkedOut && $canDo->get('core.create')) {
-		
+
 			JToolBarHelper::custom('bloom.save2new', 'save-new.png', 'save-new_f2.png', 'JTOOLBAR_SAVE_AND_NEW', false);
 		}
 		// If an existing item, can save to a copy.

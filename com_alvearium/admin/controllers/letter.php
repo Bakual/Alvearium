@@ -8,7 +8,7 @@ class AlveariumControllerBloom extends AlveariumController
 	/**
 	 * Custom Constructor (registers additional tasks to methods)
 	 */
-	function __construct($default = array())
+	public function __construct($default = array())
 	{
 		parent::__construct($default);
 
@@ -18,49 +18,58 @@ class AlveariumControllerBloom extends AlveariumController
 		$this->registerTask('add', 'display' );
 	}
 
-	function display(){
-		switch($this->getTask()){
+	public function display()
+	{
+		$jinput = JFactory::getApplication()->input;
+
+		switch ($this->task)
+		{
 			case 'add':
-				JRequest::setVar('hidemainmenu', 1);
-				JRequest::setVar('layout', 'form');
-				JRequest::setVar('view', 'letter');
-				JRequest::setVar('edit', false);
+				$jinput->set('hidemainmenu', 1);
+				$jinput->set('layout', 'form');
+				$jinput->set('view', 'letter');
+				$jinput->set('edit', false);
 				break;
 			case 'edit':
-				JRequest::setVar('hidemainmenu', 1);
-				JRequest::setVar('layout', 'form');
-				JRequest::setVar('view', 'letter');
-				JRequest::setVar('edit', true);
+				$jinput->set('hidemainmenu', 1);
+				$jinput->set('layout', 'form');
+				$jinput->set('view', 'letter');
+				$jinput->set('edit', true);
 				break;
 		}
-		parent::display();
+
+		return parent::display();
 	}
 
-	function save()
+	public function save()
 	{
 		// Check for request forgeries
 		JSession::checkToken() or jexit('Invalid Token');
 
-		$row = &JTable::getInstance('blooms', 'Table');
-		$post = JRequest::get('post');
-		// get the Text Area 'text' again, but not full *cleaned* by JRequest.
-		$post['body'] = JRequest::getVar('body', '', 'post', 'string', JREQUEST_ALLOWRAW);
+		$jinput = JFactory::getApplication()->input;
+		$row    = JTable::getInstance('blooms', 'Table');
+		$post   = $jinput->post->getArray();
+
+		// Get the Text Area 'text' again, but not full *cleaned* by JInput.
+		$post['body'] = $jinput->get('body', '', 'post', 'string', JREQUEST_ALLOWRAW);
 
 		$success = $row->save($post);
-		if (!$success) {
+
+		if (!$success)
+		{
 			JError::raiseError(500, $row->getError());
 		}
 
 		switch ($this->_task)
 		{
 			case 'apply':
-				$msg = JText::_('COM_ALVEARIUM_BLOOMS_APPLIED');
-				$link = 'index.php?option=com_alvearium&controller=letter&task=edit&cid[]='.$row->id;
+				$msg  = JText::_('COM_ALVEARIUM_BLOOMS_APPLIED');
+				$link = 'index.php?option=com_alvearium&controller=letter&task=edit&cid[]=' . $row->id;
 				break;
 
 			case 'save':
 			default:
-				$msg = JText::_('COM_ALVEARIUM_BLOOMS_SAVED');
+				$msg  = JText::_('COM_ALVEARIUM_BLOOMS_SAVED');
 				$link = 'index.php?option=com_alvearium&view=blooms';
 				break;
 		}
@@ -68,97 +77,100 @@ class AlveariumControllerBloom extends AlveariumController
 		$this->setRedirect($link, $msg);
 	}
 
-	function remove()
+	public function remove()
 	{
 		// Check for request forgeries
 		JSession::checkToken() or jexit('Invalid Token');
 
-		$cid = JRequest::getVar('cid', array(), '', 'array');
+		$jinput = JFactory::getApplication()->input;
+		$cid    = $jinput->get('cid', array(), '', 'array');
 		JArrayHelper::toInteger($cid);
 
 		$msg = JText::_('COM_ALVEARIUM_BLOOMS_DELETED');
 		$row = &JTable::getInstance('blooms', 'Table');
 
-		for ($i=0, $n=count($cid); $i < $n; $i++)
+		for ($i = 0, $n = count($cid); $i < $n; $i++)
 		{
 			if (!$row->delete($cid[$i]))
 			{
 				$msg .= $row->getError();
 			}
 		}
+
 		$this->setRedirect('index.php?option=com_alvearium&view=blooms', $msg);
 	}
 
-	function cancel()
+	public function cancel()
 	{
 		// Check for request forgeries
 		JSession::checkToken() or jexit('Invalid Token');
 
-		$id	= JRequest::getInt('id', 0);
-		$db	= &JFactory::getDBO();
-		$row = &JTable::getInstance('blooms', 'Table');
+		$id  = JFactory::getApplication()->input->getInt('id', 0);
+		$row = JTable::getInstance('blooms', 'Table');
 		$row->checkin($id);
 		$msg = JText::_('COM_ALVEARIUM_CANCELED');
-		$this->setRedirect('index.php?option=com_alvearium&view=blooms', $msg );
+		$this->setRedirect('index.php?option=com_alvearium&view=blooms', $msg);
 	}
 
 	/**
 	* Plant the selected letter as Start-letter
 	*/
-	function BloomStart()
+	public function BloomStart()
 	{
 		// Check for request forgeries
 		JSession::checkToken() or jexit( 'Invalid Token' );
 
 		// Initialize some variables
-		$db		= & JFactory::getDBO();
-		$cid	= JRequest::getVar('cid', array(), 'method', 'array');
-		$cid	= array(JFilterInput::clean(@$cid[0], 'cmd'));
+		$db  = JFactory::getDBO();
+		$cid = JFactory::getApplication()->input->get('cid', array(), 'method', 'array');
+		$cid = array(JFilterInput::clean(@$cid[0], 'cmd'));
 
-		if ($cid[0]){
+		if ($cid[0])
+		{
 			$query = "UPDATE #__alvearium_blooms \n"
-					."SET start = 0 \n";
+					. "SET start = 0 \n";
 			$db->setQuery($query);
-			$db->query();
+			$db->execute();
 
 			$query = "UPDATE #__alvearium_blooms \n"
-					."SET start = 1 \n"
-					."WHERE id = ".$db->Quote($cid[0]);
+					. "SET start = 1 \n"
+					. "WHERE id = " . $db->Quote($cid[0]);
 			$db->setQuery($query);
-			$db->query();
+			$db->execute();
 		}
 
 		$msg = JText::_('COM_ALVEARIUM_STATUS');
-		$this->setRedirect('index.php?option=com_alvearium&view=blooms', $msg );
+		$this->setRedirect('index.php?option=com_alvearium&view=blooms', $msg);
 	}
 
 	/**
 	* Plant the selected letter as Intervall-letter
 	*/
-	function BloomIntervall()
+	public function BloomIntervall()
 	{
 		// Check for request forgeries
 		JSession::checkToken() or jexit( 'Invalid Token' );
 
 		// Initialize some variables
-		$db		= & JFactory::getDBO();
-		$cid	= JRequest::getVar('cid', array(), 'method', 'array');
-		$cid	= array(JFilterInput::clean(@$cid[0], 'cmd'));
+		$db  = JFactory::getDBO();
+		$cid = JFactory::getApplication()->input->get('cid', array(), 'method', 'array');
+		$cid = array(JFilterInput::clean(@$cid[0], 'cmd'));
 
-		if ($cid[0]){
+		if ($cid[0])
+		{
 			$query = "UPDATE #__alvearium_blooms \n"
-					."SET intervall = 0 \n";
+					. "SET intervall = 0 \n";
 			$db->setQuery($query);
-			$db->query();
+			$db->execute();
 
 			$query = "UPDATE #__alvearium_blooms \n"
-					."SET intervall = 1 \n"
-					."WHERE id = ".$db->Quote($cid[0]);
+					. "SET intervall = 1 \n"
+					. "WHERE id = " . $db->quote($cid[0]);
 			$db->setQuery($query);
-			$db->query();
+			$db->execute();
 		}
 
 		$msg = JText::_('COM_ALVEARIUM_STATUS');
-		$this->setRedirect('index.php?option=com_alvearium&view=blooms', $msg );
+		$this->setRedirect('index.php?option=com_alvearium&view=blooms', $msg);
 	}
 }

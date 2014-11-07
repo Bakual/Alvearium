@@ -1,8 +1,6 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.application.component.modellist');
-
 class AlveariumModelDates extends JModelList
 {
 	function __construct()
@@ -27,10 +25,10 @@ class AlveariumModelDates extends JModelList
 	{
 		// Initialise variables.
 		$app = JFactory::getApplication();
-		$session = JFactory::getSession();
 
 		// Adjust the context to support modal layouts.
-		if ($layout = JRequest::getVar('layout')) {
+		if ($layout = $app->input->get('layout'))
+		{
 			$this->context .= '.'.$layout;
 		}
 

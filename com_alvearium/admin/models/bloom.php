@@ -8,8 +8,6 @@
 // No direct access.
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.modeladmin');
-
 class AlveariumModelBloom extends JModelAdmin
 {
 	/**
@@ -26,7 +24,7 @@ class AlveariumModelBloom extends JModelAdmin
 					return ;
 				}
 			$user = JFactory::getUser();
-	
+
 			if (!empty($record->catid)) {
 				return $user->authorise('core.delete', 'com_alvearium.category.'.(int) $record->catid);
 			}
@@ -99,7 +97,7 @@ class AlveariumModelBloom extends JModelAdmin
 		// Check the session for previously entered form data.
 		$data = JFactory::getApplication()->getUserState('com_alvearium.edit.bloom.data', array());
 
-		if (empty($data)) 
+		if (empty($data))
 		{
 			$data = $this->getItem();
 		}

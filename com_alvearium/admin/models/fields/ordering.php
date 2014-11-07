@@ -1,12 +1,4 @@
 <?php
-/**
- * @version		$Id: ordering.php 15576 2010-03-25 12:43:26Z louis $
- * @package		Joomla.Framework
- * @subpackage	Form
- * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
-
 defined('JPATH_BASE') or die;
 
 jimport('joomla.html.html');
@@ -54,7 +46,7 @@ class JFormFieldOrdering extends JFormField
 
 		// Build the query for the ordering list.
 		$query = 'SELECT ordering AS value, ' . $this->element['field'] . ' AS text' .
-				' FROM #__' . $this->element['table'] . 
+				' FROM #__' . $this->element['table'] .
 				' WHERE catid = ' . (int) $categoryId .
 				' ORDER BY ordering';
 

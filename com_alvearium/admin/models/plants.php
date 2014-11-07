@@ -1,8 +1,6 @@
 <?php
 defined('_JEXEC') or die('Restricted access');
 
-jimport('joomla.application.component.modellist');
-
 class AlveariumModelPlants extends JModelList
 {
 	function __construct()
@@ -31,7 +29,8 @@ class AlveariumModelPlants extends JModelList
 		$app = JFactory::getApplication();
 
 		// Adjust the context to support modal layouts.
-		if ($layout = JRequest::getVar('layout')) {
+		if ($layout = $app->input->get)
+		{
 			$this->context .= '.'.$layout;
 		}
 
