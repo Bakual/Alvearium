@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="3.3" method="upgrade">
+	<name>Alvearium Package</name>
+	<creationDate>2014-11-07</creationDate>
+	<author>Thomas Hunziker</author>
+	<authorEmail>bakual@bakual.net</authorEmail>
+	<authorUrl>http://www.bakual.net</authorUrl>
+	<copyright>www.bakual.net</copyright>
+	<license>GNU/GPLv2</license>
+	<version>3.0.0</version>
+	<packagename>alvearium</packagename>
+	<description>Alvearium Package</description>
+	<files>
+		<file type="component" id="com_alvearium" >com_alvearium.zip</file>
+		<file type="module" id="mod_alvearium" client="site">mod_alvearium.zip</file>
+		<file type="plugin" id="plg_content_alvearium">plg_content_alvearium.zip</file>
+		<file type="plugin" id="plg_editors_xtd_alvearium">plg_editors_xtd_alvearium.zip</file>
+	</files>
+</extension>
