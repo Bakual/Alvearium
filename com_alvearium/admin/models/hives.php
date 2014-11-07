@@ -3,9 +3,10 @@ defined('_JEXEC') or die('Restricted access');
 
 class AlveariumModelHives extends JModelList
 {
-	function __construct()
+	public function __construct()
 	{
-		if (empty($config['filter_fields'])) {
+		if (empty($config['filter_fields']))
+		{
 			$config['filter_fields'] = array(
 				'id', 'a.id',
 				'title', 'a.title',
@@ -112,7 +113,7 @@ class AlveariumModelHives extends JModelList
 			if (stripos($search, 'id:') === 0) {
 				$query->where('a.id = '.(int) substr($search, 3));
 			} else {
-				$search = $db->Quote('%'.$db->getEscaped($search, true).'%');
+				$search = $db->Quote('%'.$db->escape($search, true).'%');
 				$query->where('(a.title LIKE '.$search.' OR a.alias LIKE '.$search.')');
 			}
 		}
@@ -123,7 +124,7 @@ class AlveariumModelHives extends JModelList
 		if ($orderCol == 'a.ordering' || $orderCol == 'category_title') {
 			$orderCol = 'category_title '.$orderDirn.', a.ordering';
 		}
-		$query->order($db->getEscaped($orderCol.' '.$orderDirn));
+		$query->order($db->escape($orderCol.' '.$orderDirn));
 
 		return $query;
 	}

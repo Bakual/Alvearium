@@ -110,14 +110,14 @@ class AlveariumModelBlooms extends JModelList
 		// Filter by search in title
 		$search = $this->getState('filter.search');
 		if (!empty($search)) {
-			$search = $db->Quote('%'.$db->getEscaped($search, true).'%');
+			$search = $db->Quote('%'.$db->escape($search, true).'%');
 			$query->where('(p.title LIKE '.$search.' && a.type=1) OR (q.title LIKE '.$search.' && a.type=2)');
 		}
 
 		// Add the list ordering clause.
 		$orderCol	= $this->state->get('list.ordering');
 		$orderDirn	= $this->state->get('list.direction');
-		$query->order($db->getEscaped($orderCol.' '.$orderDirn));
+		$query->order($db->escape($orderCol.' '.$orderDirn));
 
 		return $query;
 	}
